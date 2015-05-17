@@ -1,19 +1,11 @@
-# Grunt build with Angular JS
+# Angular JS Chat System
 
-- clean build directory
-- concatenation js & css
-- copy extra stuff like fonts, images, favicon.ico to build directory
-- css minification
-- js minification
-- image minification
-- js code linting 
-- watching js, css, html, less file changes
-- code versioning
-- Angular JS code annotation
+Demo - https://hkchat.herokuapp.com/#/chatroom
 
 ## Run Application
 
 ```
+npm install
 node server.js
 ```
 
