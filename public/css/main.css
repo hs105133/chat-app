@@ -4,8 +4,13 @@ html, body{
   overflow: hidden;
 }
 
+
 body{
   padding-top: 60px;
+}
+
+.glyphicon {
+    top: 3px;
 }
 
 #mainWrapper{
@@ -76,4 +81,28 @@ body{
 .onlineUsers h5{
 	margin-top: 0;
 	margin-bottom: 0;
+}
+
+/*** part 2 ***/
+
+label[for="nickName"], #nickForm .text-danger{
+    line-height: 42px;
+}
+
+.userStatus span{
+    padding-right: 10px;
+}
+
+.username{
+    padding: 4px;
+}
+
+.username span:first-child{
+    padding-right: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    #nickForm button{
+        margin-top: 10px;
+    }
 }

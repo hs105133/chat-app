@@ -21,13 +21,34 @@ angular.module("myApp")
 		};
 
 		socket.on("new message", function(data){
+
 			$scope.$apply(function(){
 				$scope.chats.push({
-					avatar: "http://placehold.it/50/FA6F57/fff&text=ME",
-					name: "Hemant Singh",
-					msg: data
+					avatar: data.avatar,
+					name: data.nickName,
+					msg: data.msg
 				});
+
 				$scope.chatMsg = "";
+			});
+		});
+
+		$scope.addNickName = function(){
+			console.log($scope.nickName)
+			socket.emit("new user", $scope.nickName, function(nickName){
+				if(!nickName){
+					$scope.nickErr = true;
+				} else {
+					$scope.username = $scope.nickName;
+				}
+
+				$scope.nickName = "";
+			});
+		};
+
+		socket.on("usernames", function(names){
+			$scope.$apply(function(){
+				$scope.nicknames = names;
 			});
 		});
 
