@@ -1,0 +1,206 @@
+<div class="container">
+    <div class="row ">
+        <div class="col-md-8" id="chat">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right" dropdown>
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" dropdown-toggle>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
+                            </span>Refresh</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
+                            </span>Available</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
+                            </span>Busy</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
+                                Away</a></li>
+                            <li class="divider"></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
+                                Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body" scroll-bottom="chats">
+                    <ul class="chat">
+                        <li class="left clearfix" ng-repeat="chat in chats"><span class="chat-img pull-left">
+                            <img ng-src="{{ chat.avatar }}" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{ chat.name }}</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                </div>
+                                <p>
+                                    {{ chat.msg }}
+                                </p>
+                            </div>
+                        </li>
+              </ul>
+                </div>
+                <div class="panel-footer">
+                <form name="chatForm" ng-submit="sendMessage()" novalidate>
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." name="chatMsg" ng-model="chatMsg" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat" type="submit">
+                                Send</button>
+                        </span>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    ONLINE USERS
+                </div>
+                <div class="panel-body onlineUsers">
+                    <ul class="media-list">
+
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.png" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Alex Deo | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.gif" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Jhon Rexa | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.png" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Alex Deo | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.gif" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Jhon Rexa | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.png" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Alex Deo | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.gif" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Jhon Rexa | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.png" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Alex Deo | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="images/user.gif" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Jhon Rexa | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
