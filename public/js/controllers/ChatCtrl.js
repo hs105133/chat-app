@@ -2,6 +2,9 @@ angular.module("myApp")
 	.controller('ChatCtrl', function($scope){
 		var socket = io.connect();
 
+		$scope.privateChatUsers = {};
+
+
 		$scope.chats = [{
 			avatar: "http://placehold.it/50/55C1E7/fff&text=U",
 			name: "Varun Gupta",
@@ -51,5 +54,18 @@ angular.module("myApp")
 				$scope.nicknames = names;
 			});
 		});
+
+
+		$scope.privateChat = function(user){
+			console.log(user);
+			$scope.privateChatUsers[user.nickName] = {
+				avatar: user.avatar,
+				lastLogin: user.lastLogin
+			};
+		};
+
+		$scope.setPosition = function(index){
+				return index * 255 + "px";				
+		};
 
 	});
