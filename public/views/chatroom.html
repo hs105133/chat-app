@@ -17,7 +17,7 @@
     </form>
 
     <div class="row" ng-show="username">
-        <div class="col-md-8" id="chat">
+        <div class="col-sm-8 col-xs-push-4" id="chat">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-comment"></span> Chat
@@ -47,13 +47,14 @@
                     </div>
                 </div>
                 <div class="panel-body" scroll-bottom="chats">
+
                     <ul class="chat">
                         <li class="left clearfix" ng-repeat="chat in chats"><span class="chat-img pull-left">
                             <img ng-src="{{ chat.avatar }}" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
-                                    <strong class="primary-font">{{ chat.name }}</strong> <small class="pull-right text-muted">
+                                    <strong class="primary-font">{{ chat.nickName }}</strong> <small class="pull-right text-muted">
                                         <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
                                 </div>
                                 <p>
@@ -76,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-4 col-xs-pull-8">
             <div class="panel panel-success">
                 <div class="panel-heading">
                     ONLINE USERS

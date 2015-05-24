@@ -7,15 +7,15 @@ angular.module("myApp")
 
         $scope.chats = [{
             avatar: "http://placehold.it/50/55C1E7/fff&text=U",
-            name: "Varun Gupta",
+            nickName: "Varun Gupta",
             msg: "Lorem ipsum dolor sit amet, consectetur."
         }, {
             avatar: "http://placehold.it/50/FA6F57/fff&text=ME",
-            name: "Hemant Singh",
+            nickName: "Hemant Singh",
             msg: "Lorem ipsum dolor sit amet, consectetur."
         }, {
             avatar: "http://placehold.it/50/55C1E7/fff&text=U",
-            name: "Varun Gupta",
+            nickName: "Varun Gupta",
             msg: "Lorem ipsum dolor sit amet, consectetur."
         }];
 
@@ -51,7 +51,7 @@ angular.module("myApp")
             $scope.$apply(function() {
                 $scope.chats.push({
                     avatar: data.avatar,
-                    name: data.nickName,
+                    nickName: data.nickName,
                     msg: data.msg
                 });
 
@@ -84,6 +84,12 @@ angular.module("myApp")
                 $scope.nickName = "";
             });
         };
+
+        socket.on("load old msgs", function(msgs){
+            $scope.$apply(function() {
+                $scope.chats = msgs.reverse();
+            });
+        });
 
         socket.on("usernames", function(names) {
             $scope.$apply(function() {
