@@ -101,6 +101,13 @@ label[for="nickName"], #nickForm .text-danger{
     padding-right: 4px;
 }
 
+.disableClick{
+    pointer-events: none;
+    cursor: default;
+    opacity: .8;
+    color: #888;
+}
+
 @media screen and (max-width: 768px) {
     #nickForm button{
         margin-top: 10px;

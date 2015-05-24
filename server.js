@@ -2,7 +2,8 @@ var express = require('express')
     app = express(),
     server = require("http").createServer(app),
     io = require("socket.io").listen(server),
-    nicknames = [];
+    nicknames = [],
+    users = {};
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static("public"));
@@ -24,16 +25,28 @@ function getRandomColor() {
 			socket.nickName = name;
 			socket.avatar = "http://placehold.it/50/"+getRandomColor()+"/fff&text="+name[0].toUpperCase();
 
-
 			nicknames.push({
 				avatar: socket.avatar,
 				nickName: socket.nickName, 
 				lastLogin: new Date().getTime()
 			});
+			users[socket.nickName] = socket;
 			updateNickNames();
 		} else {
 			callback(false);
 		}
+
+		// if(name in users){
+		// 	callback(false);
+		// } else {
+		// 	callback(true);
+		// 	socket.nickName = name;
+		// 	socket.avatar = "http://placehold.it/50/"+getRandomColor()+"/fff&text="+name[0].toUpperCase();
+		// 	socket.lastLogin = new Date().getTime();
+
+		// 	users[socket.nickName] = socket;
+		// 	updateNickNames();			
+		// }
 	});
 
 	function updateNickNames(){
@@ -48,10 +61,28 @@ function getRandomColor() {
 		});
 	});
 
+	socket.on("send private message", function(data){
+		var name = data.toUser;
+
+		if(name in users){
+			users[name].emit("new private message", {
+				avatar: socket.avatar,
+				nickName: socket.nickName,
+				msg: data.pvtMsg
+			});
+		}
+	});
+
 	socket.on("disconnect", function(data){
 		if(!socket.nickName) return;
 
 		nicknames.splice(nicknames.indexOf(socket.nickName), 1);
+
+		if(users[socket.nickName]){
+			io.sockets.emit("removePvtChatWindow", socket.nickName);
+			delete users[socket.nickName];
+		}
+
 		updateNickNames();
 	});
 });

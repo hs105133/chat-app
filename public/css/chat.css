@@ -6,11 +6,11 @@
 	bottom: 0px;
 	right: 10px;
 	width: 240px;
-	height: 300px;
 	font-family: 'Open Sans', sans-serif;
 	background-color: #fff;	
 	border: 1px solid #ccc;
 	font-size: 12px;
+	z-index: 200;
 }
 
 /* CHAT PARTNER NAME */
@@ -42,6 +42,7 @@
 	margin-right: 4px;
 	padding-left: 4px;
 	padding-right: 4px;
+	outline: none;
 }
 .chatbox .header a:hover {
 	color: #000;
@@ -136,3 +137,42 @@
 	font-style: italic;	
 	font-size: 11px;
 }
+
+
+.minimize_chatbox{
+	display: block;
+	height: 24px;
+	position: relative;
+	width: 15px;
+}
+
+.minimize_chatbox::before {
+	background: #fff;
+	height: 2px;
+	left: 1px;
+	margin-top: -2px;
+	width: 11px;
+}
+
+.minimize_chatbox::before, .minimize_chatbox::after {
+	content: "";
+	left: -2px;
+	position: absolute;
+	top: 14px;
+}
+
+.minimize_chatbox:hover::before, .minimize_chatbox:focus::before, .minimize_chatbox:active::before {
+    background: hsl(4, 100%, 23%) none repeat scroll 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+

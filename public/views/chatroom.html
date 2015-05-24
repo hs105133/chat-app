@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <form class="mTop" id="nickForm" ng-submit="addNickName()" ng-hide="username">
         <div class="row">
             <div class="col-sm-2">
@@ -85,15 +85,14 @@
                     <ul class="media-list">
 
                         <li class="media" ng-repeat="user in nicknames">
-
                             <div class="media-body">
 
                                 <div class="media">
-                                    <a class="pull-left" href="#">
+                                    <a class="pull-left" href="" ng-click="privateChat(user)" ng-class="{'disableClick': user.nickName === username }">
                                         <img class="media-object img-circle" style="max-height:40px;" ng-src="{{ user.avatar }}" />
                                     </a>
                                     <div class="media-body">
-                                        <h5><a href="" ng-click="privateChat(user)">{{ user.nickName }}</a></h5>
+                                        <h5><a href="" ng-click="privateChat(user)" ng-class="{'disableClick': user.nickName === username }">{{ user.nickName }}</a></h5>
 
                                         <small class="text-muted">Active From {{ user.lastLogin| date:"H"}} hours </small>
                                     </div>
@@ -109,22 +108,21 @@
     </div>
 </div>
 
-
-<div title="Demo Bot" id="chat_window{{$index}}" class="chatbox" ng-repeat="(pKey, pVal) in privateChatUsers" ng-style="{ 'right': setPosition($index) }">
+<div title="Demo Bot" class="chatbox" ng-repeat="(pKey, pVal) in privateChatUsers" ng-style="{ 'right': setPosition($index) }">
     <div title="Demo Bot" class="header">
-        <p>{{ pKey }}</p><a title="close chat window" class="close_chatbox" href="#">X</a><a title="minimize chat window" class="minimize_chatbox" href="#">_</a><a title="maximize chat window" class="maximize_chatbox" href="#">‾</a>
+        <p>{{ pKey }}</p><a title="close chat window" class="close_chatbox" href="" ng-click="closePrivateChat(pKey)">X</a>
+        <a title="minimize chat window" class="minimize_chatbox" href="" ng-click="toggleChatWindow(pKey)"></a>
+        <a title="maximize chat window" class="maximize_chatbox" href="#">‾</a>
     </div>
-    <div title="Demo Bot" class="chat_area">
-        <p><b>Demo Bot: </b>Hello!</p>
-        <p><b>Demo Bot: </b>I'm a demo bot and I'll repeat what you write! <img src="http://www.jquerychat.net/js/jquerychat/smileys-smile.png">
-        </p>
-        <p class="me"><b>Me: </b>rwerwe</p>
-        <p><b>Demo Bot: </b>rwerwe</p>
-    </div>
-    <div class="chat_info">
-        <p></p>
-    </div>
-    <div title="Type your message here" class="chat_message">
-        <textarea></textarea>
+    <div class="chat_area_wrapper" ng-hide="chatWindow[pKey]">
+        <div title="Demo Bot" class="chat_area">
+            <p ng-repeat="pvtChat in privateChatUsers[pKey].pvtChats"><b>{{ pvtChat.nickName }}: </b> {{ pvtChat.msg }}</p>
+        </div>
+        <div class="chat_info">
+            <p></p>
+        </div>
+        <div title="Type your message here" class="chat_message">
+            <textarea ng-model="pvtMsg[$index]" ng-keypress="sendPvtMessage($event, pKey, $index)"></textarea>
+        </div>
     </div>
 </div>
